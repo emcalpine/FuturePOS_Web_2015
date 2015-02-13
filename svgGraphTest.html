@@ -1,0 +1,49 @@
+<html>
+<body>
+<div id="divInput">
+<input type="text" id="xCoord"/>
+<input type="text" id="yCoord"/>
+<input type="button" id="btnSubmit" value="submit" onclick="addPoint()"/>
+<input type="button" id="btnClear" value="clear" onclick="clear()"/>
+<input type="button" id="btnDraw" value="draw" onclick="newGraph()"/>
+</div>
+
+
+<script language="JavaScript">
+var pointAry="";
+function addPoint(){
+	var x=Document.getElementByID("xCoord").value;
+	var y=Document.getElementByID("yCoord").value;
+	var point=x+","+y;
+	if(pointAry="")
+		pointAry=point;
+	else
+		pointAry+=" "+point;
+}
+
+function clear(){
+	//Document.body.removeChild("esVeeGee");
+	pointAry="";
+}
+
+function newGraph(){
+	var esVeeGee=document.createElementNS("http://www.w3.org/2000/svg", "svg");
+	esVeeGee.setAttribute("width", "80%");
+	esVeeGee.setAttribute("height", "80");
+	esVeeGee.setAttribute("x", "10%");
+	esVeeGee.setAttribute("y", "10%");
+	var rectangle=Document.createElement("rect");
+	rectangle.setAttribute("x", "10%");
+	rectangle.setAttribute("y", "10%");
+	rectangle.setAttribute("width", "80%");
+	rectangle.setAttribute("height", "80%");
+	rectangle.setAttribute("stroke", "red");
+	
+	esVeeGee.appendChild(rectangle);
+	Document.body.appendChild(esVeeGee);
+}
+
+</script>
+
+</body>
+</html>
