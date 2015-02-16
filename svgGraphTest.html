@@ -12,9 +12,9 @@
 <script language="JavaScript">
 var pointAry="";
 function addPoint(){
-	var x=Document.getElementByID("xCoord").value;
-	var y=Document.getElementByID("yCoord").value;
-	var point=x+","+y;
+	var x=document.getElementById("xCoord").value;
+	var y=document.getElementById("yCoord").value;
+	var point=x+","+y+"";
 	if(pointAry="")
 		pointAry=point;
 	else
@@ -29,18 +29,30 @@ function clear(){
 function newGraph(){
 	var esVeeGee=document.createElementNS("http://www.w3.org/2000/svg", "svg");
 	esVeeGee.setAttribute("width", "80%");
-	esVeeGee.setAttribute("height", "80");
+	esVeeGee.setAttribute("height", "80%");
 	esVeeGee.setAttribute("x", "10%");
 	esVeeGee.setAttribute("y", "10%");
-	var rectangle=Document.createElement("rect");
-	rectangle.setAttribute("x", "10%");
-	rectangle.setAttribute("y", "10%");
+	var rectangle=document.createElementNS("http://www.w3.org/2000/svg", "rect");
+	//rectangle.setAttribute("x", "10%");
+	//rectangle.setAttribute("y", "10%");
 	rectangle.setAttribute("width", "80%");
 	rectangle.setAttribute("height", "80%");
 	rectangle.setAttribute("stroke", "red");
 	
+	pointAry+=" 100,100 0,100";
+	
+	var lineGroup=document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+	lineGroup.setAttribute("points", pointAry);
+	lineGroup.setAttribute("stroke", "yellow");
+	
+	var lineScale=document.createElement("g");
+	lineScale.setAttribute("transform", "scale(0.8)");
+	var lineTranslate=document.createElement("g");
+	lineTranslate.setAttribute("transform", "translate()")
+	
 	esVeeGee.appendChild(rectangle);
-	Document.body.appendChild(esVeeGee);
+	esVeeGee.appendChild(lineGroup);
+	document.body.appendChild(esVeeGee);
 }
 
 </script>
